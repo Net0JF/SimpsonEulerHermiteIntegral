@@ -30,8 +30,7 @@ def simpson_compuesta(function_string, a, b, n):
         
         for i in range (n+1):
             xi = a + i * h
-            ki = function_evaluar(function_string, xi)
-            
+            ki = function_evaluar(function_string, xi)            
             if i == 0 or i == n:
                 resultado +=  ki
             elif i%2==0:
@@ -40,8 +39,8 @@ def simpson_compuesta(function_string, a, b, n):
                 resultado += 4*ki
                 
         resultado *= h/ 3.0     
-
-        messagebox.showinfo("Resultado: ", f"El resultado de la integral es: {resultado:.5f}")        
+        messagebox.showinfo("Resultado", f"El resultado de la integral es: {resultado:.5f}")       
+        
     except ValueError:
         messagebox.showinfo("Error", "Favor de ingresar valores validos")
         
@@ -77,7 +76,7 @@ def simpson_compuesta_window():
     entry_n = tk.Entry(window)
     entry_n.pack(pady=5)
 
-    button_calcular= tk.Button(window, text="Calcular", command=lambda: simpson_compuesta(entry_function.get(), entry_a.get(), entry_b.get, entry_n.get()))
+    button_calcular= tk.Button(window, text="Calcular", command=lambda: simpson_compuesta(entry_function.get(), entry_a.get(), entry_b.get(), entry_n.get()))
     button_calcular.pack(pady=5) 
 
             
