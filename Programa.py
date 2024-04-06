@@ -110,8 +110,8 @@ def euler_window():
     entry_n = tk.Entry(window)
     entry_n.pack(pady=5)
 
-    #button_calcular= tk.Button(window, text="Calcular", command=lambda: metodo_euler(entry_function.get(), entry_x0_y0.get(), entry_h.get(), entry_n.get()))
-    #button_calcular.pack(pady=5)
+    button_calcular= tk.Button(window, text="Calcular", command=lambda: metodo_euler(entry_function.get(), entry_x0_y0.get(), entry_h.get(), entry_n.get()))
+    button_calcular.pack(pady=5)
 
 def metodo_euler():
     try
