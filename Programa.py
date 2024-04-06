@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 
+from sympy import sympify
+
 
 def main():
     root = tk.Tk()
@@ -19,9 +21,21 @@ def simpson_compuesta_window():
     label_function = tk.Label(window, text="Función a integrar (f(x)): ")
     label_function.pack()
     entry_function = tk.Entry(window)
-    entry_function.pack()   
+    entry_function.pack()
+    
+    label_a = tk.Label(window, text="Límite inferior (a): ") 
+    label_a.pack()
+    entry_a = tk.Entry(window)
+    entry_a.pack
+    
+    label_b = tk.Label(window, text= "Límite inferior (b): ")
+    label_b.pack()
+    entry_b = tk.Entry(window)
+    entry_b.pack
+    
+    label_n = tk.Label(window, text="Número de intervalos")
 
-    button_calcular= tk.Button(window, text="Calcular", comand=lambda: simpson_compuesta(entry_function.get(), entry_a.get(), entry_b.get, entry_n.get))
+    button_calcular= tk.Button(window, text="Calcular", comand=lambda: simpson_compuesta(entry_function.get(), entry_a.get(), entry_b.get, entry_n.get()))
     button_calcular.pack
     
 def simpson_compuesta(a, b, n):
@@ -34,7 +48,7 @@ def simpson_compuesta(a, b, n):
         
         for i in range (n+1):
             xi = a + i * h
-            ki = funcion_evaluar(funcion_String, xi)
+            ki = function_evaluar(function_String, xi)
             
             if i == 0 or i == n:
                 resultado +=  ki
@@ -49,9 +63,12 @@ def simpson_compuesta(a, b, n):
     except ValueError:
         messagebox.showinfo("Error", "Favor de ingresar valores validos")
         
-        def funcion_evaluar(funcion_String, xi)
-        
-    
-    
+        def funcion_evaluar(funcion_String, x):
+            try:
+                return float(sympify(funcion_String).subs('x', x))                        
+            except Exception as e:
+                messagebox.showerror("Error", f"Erroe al evaluar función: {e}")
+                return 0
+            
 if __name__ == "__main__":
     main()
