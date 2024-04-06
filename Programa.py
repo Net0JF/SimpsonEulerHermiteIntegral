@@ -24,7 +24,7 @@ def simpson_compuesta(function_string, a, b, n):
     try:
         a = float(a)
         b = float(b)
-        n = float(n)
+        n = int(n)
         h = (b-a)/n
         resultado=0
         
@@ -77,7 +77,7 @@ def simpson_compuesta_window():
     entry_n.pack(pady=5)
 
     button_calcular= tk.Button(window, text="Calcular", command=lambda: simpson_compuesta(entry_function.get(), entry_a.get(), entry_b.get(), entry_n.get()))
-    button_calcular.pack(pady=5) 
+    button_calcular.pack(pady=5)
 
             
 if __name__ == "__main__":
