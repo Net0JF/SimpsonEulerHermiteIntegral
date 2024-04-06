@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 
 def main():
@@ -43,10 +44,13 @@ def simpson_compuesta(a, b, n):
                 resultado += 4*ki
         resultado *= h/ 3.0
         
-        mesaggebox
+        messagebox.showinfo("Resultado: ", f"El resultado de la integral es: {resultado:.5f}")
         
     except ValueError:
-        messageBox.
+        messagebox.showinfo("Error", "Favor de ingresar valores validos")
+        
+        def funcion_evaluar(funcion_String, xi)
+        
     
     
 if __name__ == "__main__":
