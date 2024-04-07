@@ -42,7 +42,7 @@ def simpson_compuesta_window():
     entry_function = tk.Entry(window)
     entry_function.pack(pady=5)
     
-    label_a = tk.Label(window, text="Límite inferior (a): ") 
+    label_a = tk.Label(window, text="Límite inferior (a): ")
     label_a.pack()
     entry_a = tk.Entry(window)
     entry_a.pack(pady=5)
@@ -150,8 +150,8 @@ def hermite_window():
 
 def metodo_hermite(puntos_str, valores_str):
     try:
-        puntos = [tuple(map(float, p.split()))for p in puntos_str.split]
-        valores = [float(x)for x in valores_str.split]
+        puntos = [tuple(map(float, p.split()))for p in puntos_str.split()]
+        valores = [float(x)for x in valores_str.split()]
         result = []
         
         for x_valor in valores:
@@ -180,10 +180,12 @@ def metodo_hermite(puntos_str, valores_str):
                     if j!= i:
                         hermite_basis *= (x_valor - puntos[j][0])
                         hermite_basis_derivative += 1/(p-puntos[j][0])
-                hermite_polynomial += y * hermite_basis * ((1-2* hermite_basis_dertivative * (x_valor-p))*(1-2*hermite_basis_derivative*(x_valor-p))-h*h*hermite_basis_derivative)/(h*h)
+                hermite_polynomial += y * hermite_basis * ((1-2* hermite_basis_derivative * (x_valor-p))*(1-2*hermite_basis_derivative*(x_valor-p))-h*h*hermite_basis_derivative)/(h*h)
+                
             result.append((x_valor, hermite_polynomial))
         
-        messagebox.showinfo("Resultado", f"Interpolación de Hermite para los valores de x: {result}")
+        result_text = "\n".join([f"x = {x}, y = {y}" for x, y in result])
+        messagebox.showinfo("Resultado", f"Interpolación de Hermite para los valores de x:\n{result_text}")
     except ValueError:
         messagebox.showerror("Error", "Ingresar puntos y valores de x válidos")
     
