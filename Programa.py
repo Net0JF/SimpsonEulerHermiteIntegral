@@ -114,10 +114,21 @@ def euler_window():
     button_calcular.pack(pady=5)
 
 def metodo_euler():
-    try
-    except
-
-
+    try:
+        x0, y0 = map(float, xy0.split())
+        h = float(h)
+        n = int(n)
+        result = []
+        
+        for _ in range(n):
+            yi = y0 + h * function_evaluar(function_string, x0)
+            result.append((x0, yi))
+            x0 += h
+            y0 = yi
+        
+        messagebox.showinfo("Resultado: ", f"Solución aproximada: {result}")
+    except ValueError:
+        messagebox.showerror("Error", "Favor de ingresar números válidos para x0, y0, h y n")
 
 def hermite_window():
     window = tk.Toplevel()
